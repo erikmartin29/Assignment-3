@@ -13,24 +13,44 @@ function Square(gl, vertexShader, fragmentShader) {
     // Set up our data:
     //   - positions contains our vertex positions
     //   - indices contains how to organize the vertices
-    //       into primitives
-    //
+    //     into primitives
+
     let positions = [
-        0.0, 0.0,  // Vertex 0
-        1.0, 0.0,  // Vertex 1
-        0.0, 1.0,  // Vertex 2
-        1.0, 1.0   // Vertex 3
+        0.0, 0.0, 0.0,  // Vertex 0
+        1.0, 0.0, 0.0,  // Vertex 1
+        0.0, 1.0, 0.0,  // Vertex 2
+        1.0, 1.0, 0.0,  // Vertex 3
+        0.0, 0.0, 1.0,  // Vertex 4
+        1.0, 0.0, 1.0,  // Vertex 5
+        0.0, 1.0, 1.0,  // Vertex 6
+        1.0, 1.0, 1.0   // Vertex 7
     ];
 
     let indices = [
-        0, 1, 2,
-        1, 2, 3
+        
+        0,1,3, //FRONT
+        0,3,2,
+
+        1,5,7, //RIGHT
+        1,7,3,
+
+        5,4,6, //BACK
+        5,6,7,
+
+        4,0,2, //LEFT
+        4,2,6,
+
+        4,5,1, //BOTTOM
+        4,1,0,
+
+        2,3,7, //TOP
+        2,7,6
     ];
 
     // Initialize all of our WebGL "plumbing" variables
-    //
+
     let aPosition = new Attribute(gl, program, positions,
-	    "aPosition", 2, gl.FLOAT);
+	    "aPosition", 3, gl.FLOAT);
 
     indices = new Indices(gl, indices);
 

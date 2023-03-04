@@ -47,6 +47,8 @@
         gl = canvas.getContext("webgl2");
 
         gl.clearColor(0.1, 0.1, 0.1, 1.0);
+        gl.clearDepth(1.0);
+        gl.enable(gl.DEPTH_TEST);
         
         square = new Square(gl);
 
@@ -57,11 +59,11 @@
     }
 
     function render() {
-        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
         time += 1.0;
 
-        square.MV = rotateZ(time);
+        square.MV = mult(mult(rotateX(time), rotateY(time)), rotateZ(time));
 
         square.render();
 
