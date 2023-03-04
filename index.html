@@ -3,9 +3,9 @@
 <script src="initShaders.js"></script>
 <script src="helpers.js"></script>
 <script src="MV.js"></script>
-<script src="Square.js"></script>
+<script src="Cube.js"></script>
 
-<script id="Square-vertex-shader" type="x-shader/x-vertex">
+<script id="Cube-vertex-shader" type="x-shader/x-vertex">
     in vec4 aPosition;
 
     out vec4 vColor;
@@ -26,7 +26,7 @@
     }
 </script>
 
-<script id="Square-fragment-shader" type="x-shader/x-fragment">
+<script id="Cube-fragment-shader" type="x-shader/x-fragment">
     in vec4 vColor;
     out vec4 fColor;
 
@@ -50,10 +50,10 @@
         gl.clearDepth(1.0);
         gl.enable(gl.DEPTH_TEST);
         
-        square = new Square(gl);
+        cube = new Cube(gl);
 
-        square.P = mat4();
-        square.MV = mat4();
+        cube.P = mat4();
+        cube.MV = mat4();
 
         render();
     }
@@ -63,9 +63,10 @@
 
         time += 1.0;
 
-        square.MV = mult(mult(rotateX(time), rotateY(time)), rotateZ(time));
+        //rotate on all 3 axes
+        cube.MV = mult(mult(rotateX(time), rotateY(time)), rotateZ(time));
 
-        square.render();
+        cube.render();
 
         requestAnimationFrame(render);
     }

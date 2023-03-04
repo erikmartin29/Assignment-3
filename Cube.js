@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////////
 //
-//  Square.js
+//  Cube.js
 //
 
-function Square(gl, vertexShader, fragmentShader) {
+function Cube(gl, vertexShader, fragmentShader) {
 
-    vertexShader ||= "Square-vertex-shader";
-    fragmentShader ||= "Square-fragment-shader";
+    vertexShader ||= "Cube-vertex-shader";
+    fragmentShader ||= "Cube-fragment-shader";
 
     let program = initShaders(gl, vertexShader, fragmentShader);
 
