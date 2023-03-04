@@ -73,7 +73,7 @@ function Attribute(gl, program, values, variable, numComponents, type) {
 //
 //  Configure shader uniforms;
 //
-"use strict";
+
 function Uniform(gl, program, variable, type) {
     let location = gl.getUniformLocation(program, variable);
 
@@ -127,12 +127,12 @@ function Uniform(gl, program, variable, type) {
 //
 //  Configure element buffers.
 //
-function Element(gl, indices) {
+function Indices(gl, indices) {
 
     let typedArray = undefined;
     let type = undefined;
 
-    let max = Math.max.apply(null, indices);
+    let max = indices.reduce((x, m) => { return x > m ? x : m; });
     if (max < 256) {
         typedArray = new Uint8Array(indices);
         type = gl.UNSIGNED_BYTE;

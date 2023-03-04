@@ -44,7 +44,7 @@ function vec2() {
 function vec3() {
     let result = _argumentsToArray( arguments );
     result.type = "vec3";
-    
+     
     switch ( result.length ) {
         case 0: result.push( 0.0 );
         case 1: result.push( 0.0 );
